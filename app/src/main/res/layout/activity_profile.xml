@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile"
+    android:background="@color/teal_200">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_above="@+id/btn_editdata"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btn_backgrnd"
+                    android:text="NAME"
+                    android:textColor="@color/white"
+                    android:gravity="center"></TextView>
+                <TextView
+                    android:id="@+id/edt_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/edt_name"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btn_backgrnd"
+                    android:text="PHONE NUMBER"
+                    android:textColor="@color/white"
+                    android:gravity="center"></TextView>
+                <!--    <TextView-->
+                <!--        android:id="@+id/edt_dd"-->
+                <!--        android:layout_width="match_parent"-->
+                <!--        android:layout_height="55dp"-->
+                <!--        android:layout_below="@+id/edt_phone"-->
+                <!--        android:layout_marginLeft="20dp"-->
+                <!--        android:layout_marginTop="10dp"-->
+                <!--        android:gravity="center"-->
+                <!--        android:layout_marginRight="20dp"-->
+                <!--        android:background="@drawable/edt_backgrnd"-->
+                <!--        android:hint="Phone"-->
+                <!--        android:paddingLeft="20dp"></TextView>-->
+                <TextView
+                    android:id="@+id/edt_eml2"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/edt_phone"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btn_backgrnd"
+                    android:gravity="center"
+                    android:text="EMAIL"
+                    android:textColor="@color/white"></TextView>
+
+                <TextView
+                    android:id="@+id/edt_wlt"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/edt_eml2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btn_backgrnd"
+                    android:text="WALLET BALANCE"
+                    android:textColor="@color/white"
+                    android:gravity="center"></TextView>
+                <TextView
+                    android:id="@+id/btn_changeEmail"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="70dp"
+                    android:text="COINS"
+                    android:textColor="@color/white"
+                    android:layout_below="@+id/edt_wlt"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_backgrnd">
+                </TextView>
+                <TextView
+                    android:id="@+id/edt_pass2"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/btn_changeEmail"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/btn_backgrnd"
+                    android:text="POINTS"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    ></TextView>
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btn_editdata"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:text="EDIT DATA"
+            android:textColor="@color/white"
+            android:layout_marginBottom="-6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+        </Button>
+    </RelativeLayout>
+
+
+</RelativeLayout>

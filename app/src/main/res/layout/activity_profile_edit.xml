@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profileEdit"
+    android:background="@color/teal_200">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_above="@+id/btn_save">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <EditText
+                   android:id="@+id/edt_name"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginRight="20dp"
+                   android:background="@drawable/edt_backgrnd"
+                   android:hint="Enter New Name"
+                   android:paddingLeft="20dp"></EditText>
+               <EditText
+                   android:id="@+id/edt_phone"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:layout_below="@+id/edt_name"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginRight="20dp"
+                   android:background="@drawable/edt_backgrnd"
+                   android:hint="Enter New Phone Number"
+                   android:paddingLeft="20dp"></EditText>
+               <!--    <TextView-->
+               <!--        android:id="@+id/edt_dd"-->
+               <!--        android:layout_width="match_parent"-->
+               <!--        android:layout_height="55dp"-->
+               <!--        android:layout_below="@+id/edt_phone"-->
+               <!--        android:layout_marginLeft="20dp"-->
+               <!--        android:layout_marginTop="10dp"-->
+               <!--        android:gravity="center"-->
+               <!--        android:layout_marginRight="20dp"-->
+               <!--        android:background="@drawable/edt_backgrnd"-->
+               <!--        android:hint="Phone"-->
+               <!--        android:paddingLeft="20dp"></TextView>-->
+               <EditText
+                   android:id="@+id/edt_eml2"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:layout_below="@+id/edt_phone"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginTop="40dp"
+                   android:layout_marginRight="20dp"
+                   android:background="@drawable/edt_backgrnd"
+                   android:hint="Old Email"
+                   android:paddingLeft="20dp"></EditText>
+               <EditText
+                   android:id="@+id/edt_eml3"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:layout_below="@+id/edt_eml2"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_marginRight="20dp"
+                   android:background="@drawable/edt_backgrnd"
+                   android:hint="New Email"
+                   android:paddingLeft="20dp"></EditText>
+               <Button
+                   android:id="@+id/btn_changeEmail"
+                   android:layout_width="match_parent"
+                   android:layout_marginHorizontal="20dp"
+                   android:layout_height="55dp"
+                   android:text="Change Email"
+                   android:textColor="@color/white"
+                   android:layout_below="@+id/edt_eml3"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="15dp"
+                   android:background="@drawable/btn_backgrnd">
+               </Button>
+               <EditText
+                   android:id="@+id/edt_pass2"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:layout_below="@+id/btn_changeEmail"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginTop="40dp"
+                   android:hint="Old Password"
+                   android:background="@drawable/edt_backgrnd"
+                   android:paddingLeft="20dp"
+                   ></EditText>
+               <EditText
+                   android:id="@+id/edt_pass3"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:layout_below="@+id/edt_pass2"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginTop="15dp"
+                   android:hint="New Password"
+                   android:background="@drawable/edt_backgrnd"
+                   android:paddingLeft="20dp"
+                   ></EditText>
+               <Button
+                   android:id="@+id/btn_changePass"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:text="Change Password"
+                   android:textColor="@color/white"
+                   android:layout_below="@+id/edt_pass3"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="15dp"
+                   android:layout_marginHorizontal="20dp"
+                   android:background="@drawable/btn_backgrnd">
+               </Button>
+
+           </RelativeLayout>
+       </ScrollView>
+       <Button
+           android:id="@+id/btn_save"
+           android:layout_width="match_parent"
+           android:layout_height="?attr/actionBarSize"
+           android:text="Save Changes"
+           android:textColor="@color/white"
+           android:layout_marginBottom="-6dp"
+           android:layout_centerHorizontal="true"
+           android:layout_alignParentBottom="true">
+       </Button>
+   </RelativeLayout>
+
+</RelativeLayout>

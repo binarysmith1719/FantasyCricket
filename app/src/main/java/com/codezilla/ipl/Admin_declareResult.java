@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Admin_declareResult extends AppCompatActivity {
+public class Admin_declareResult extends AppCompatActivity implements Admin_StmtResult.onLeagueCompleteListener{
 
     ArrayList<leagueList> arrayList=new ArrayList<>();
     Admin_addLeagueAdapter aa;
@@ -32,13 +32,14 @@ public class Admin_declareResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_declare_result);
-
+        Admin_StmtResult.makeref(this);
         RecyclerView rvlg= findViewById(R.id.ryResult);
         aa= new Admin_addLeagueAdapter(arrayList,this);
         Admin_addLeagueAdapter.choice=2;
         rvlg.setLayoutManager(new LinearLayoutManager(this));
         rvlg.setHasFixedSize(true);
         rvlg.setAdapter(aa);
+
         getLeague();
     }
     void getLeague()
@@ -119,5 +120,10 @@ public class Admin_declareResult extends AppCompatActivity {
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void oncompletion() {
+        getLeague();
     }
 }

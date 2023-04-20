@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Admin_StmtResult extends AppCompatActivity {
+    static onLeagueCompleteListener reference;
+
     ArrayList<data_stmt> stmtlist=new ArrayList<>();
     int league_id;
     String LEAGUE_KEY="lgkey";
@@ -184,5 +186,14 @@ public class Admin_StmtResult extends AppCompatActivity {
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    static void makeref(onLeagueCompleteListener reference)
+    {
+        Admin_StmtResult.reference=reference;
+    }
+
+    public interface onLeagueCompleteListener{
+        public void oncompletion();
     }
 }

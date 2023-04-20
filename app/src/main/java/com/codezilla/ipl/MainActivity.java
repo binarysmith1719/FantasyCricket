@@ -24,18 +24,29 @@ import org.intellij.lang.annotations.Language;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     private String MAIN_KEY="main_key";
+    private String LEAGUE_KEY="lgkey";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences shpf = getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
+        Boolean logadmin=shpf.getBoolean("ADMINlogged",false);
 
         SharedPreferences getshpf= getSharedPreferences(MAIN_KEY,MODE_PRIVATE);
         Boolean value = getshpf.getBoolean("logged",false);
-        if(value==false)
+
+        if(value==false && logadmin==false )
         {
-            Intent intent = new Intent(MainActivity.this,login.class);
+            Intent intent= new Intent(MainActivity.this,SelectLoginType.class);
             finish();
             startActivity(intent);
+        }
+        else if(logadmin==true)
+        {
+            Intent in= new Intent(MainActivity.this,AdminDash.class);
+            finish();
+            startActivity(in);
         }
 //        SharedPreferences.Editor editor = getshpf.edit();
 //        editor.putBoolean("logged",false);
@@ -74,20 +85,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this, language.class);
-                startActivity(intent);
+                Intent in= new Intent(MainActivity.this,CheckWinners.class);
+                startActivity(in);
             }
         });
     }
-
+    String UID_KEY="main_key";
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        SharedPreferences getshpf= getSharedPreferences(UID_KEY,MODE_PRIVATE);
         switch(item.getItemId())
         {
             case R.id.nav_coins:
+                int coins = getshpf.getInt("coins",2);
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("COINS");
-                dialog.setMessage("Total coins are 9090");
+                dialog.setMessage("Total coins are "+Integer.toString(coins));
                 dialog.setIcon(R.drawable.ic_baseline_check_box_24);
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -98,9 +111,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 dialog.show();
                 break;
             case R.id.nav_points:
+                int pnts = getshpf.getInt("points",2);
                 AlertDialog.Builder dialog1 = new AlertDialog.Builder(MainActivity.this);
                 dialog1.setTitle("POINTS");
-                dialog1.setMessage("Total points are 9090");
+                dialog1.setMessage("Total points are "+Integer.toString(pnts));
                 dialog1.setIcon(R.drawable.ic_baseline_check_box_24);
                 dialog1.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -111,14 +125,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 dialog1.show();
                 break;
             case R.id.nav_wallet:
+                int balance = getshpf.getInt("wallet",2);
                 AlertDialog.Builder dialog2 = new AlertDialog.Builder(MainActivity.this);
                 dialog2.setTitle("WALLET BALANCE");
-                dialog2.setMessage("Your Wallet Balance is 9090");
+                dialog2.setMessage("Your Wallet Balance is "+Integer.toString(balance));
                 dialog2.setIcon(R.drawable.ic_baseline_check_box_24);
                 dialog2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                    }
+                });
+                dialog2.setNegativeButton("+ADD Balance",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent= new Intent(MainActivity.this,AddAmount.class);
+                        startActivity(intent);
                     }
                 });
                 dialog2.show();
@@ -127,7 +149,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(MainActivity.this, "Help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
-                Intent intent= new Intent(this, login.class);
+
+                SharedPreferences shpf = getSharedPreferences(UID_KEY,MODE_PRIVATE);
+                SharedPreferences.Editor editor = shpf.edit();
+                editor.putBoolean("logged",false);
+                editor.apply();
+
+                SharedPreferences Xshpf= getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
+                SharedPreferences.Editor editorx = Xshpf.edit();
+                editorx.putBoolean("ADMINlogged",false);
+                editorx.apply();
+
+                Intent intent= new Intent(MainActivity.this,SelectLoginType.class);
                 startActivity(intent);
                 break;
             case R.id.nav_profile:

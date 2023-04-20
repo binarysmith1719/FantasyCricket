@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin_LeagueDetail">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/txtlgname"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/edt_backgrnd"
+        android:hint="Enter the league name">
+    </EditText>
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/txtdate"
+        android:gravity="center"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtlgname"
+        android:layout_height="wrap_content"
+        android:text="Date">
+    </TextView>
+
+    <Button
+        android:id="@+id/btndate"
+        android:layout_width="match_parent"
+        android:text="set date"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_backgrnd"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtdate"></Button>
+
+    <TextView
+        android:id="@+id/txttime"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="20dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Time"
+     app:layout_constraintTop_toBottomOf="@id/btndate"></TextView>
+
+    <Button
+        android:id="@+id/btntime"
+        android:layout_width="match_parent"
+        android:text="set time"
+        android:background="@drawable/btn_backgrnd"
+        android:layout_marginHorizontal="10dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/txttime"></Button>
+
+    <Button
+        android:id="@+id/setleague"
+        android:layout_width="match_parent"
+
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="-6dp"
+        android:text="SET LEAGUE"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

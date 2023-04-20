@@ -1,11 +1,9 @@
 package com.codezilla.ipl;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -27,56 +25,58 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class dashboard extends AppCompatActivity {
-//    String LGE_KEY="league_key";
-    ArrayList<leagueList> arrayList= new ArrayList<>();
-    dashAdapter da;
+public class showLeagueWinners extends AppCompatActivity {
+    ArrayList<winner> wlist=new ArrayList<>();
+    showWinnerAdapter sa;
+    int league_id;
+    String LEAGUE_KEY="lgkey";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-        Toolbar toolBar = findViewById(R.id.tool_bar);
-        setSupportActionBar(toolBar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_show_league_winners);
+        SharedPreferences getshpf= getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
+        int value = getshpf.getInt("leagueADMIN",1);
+        league_id=value;
 
-        RecyclerView rv= findViewById(R.id.dashRV);
+        RecyclerView rv= findViewById(R.id.winnerrv);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setHasFixedSize(true);
 
-        da = new dashAdapter(arrayList,this);
-        rv.setAdapter(da);
+        sa= new showWinnerAdapter(this,wlist);
+        rv.setAdapter(sa);
 
-        getLeague();
+        getWinners();
     }
-    void getLeague()
+    void getWinners()
     {
+        wlist.clear();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
-                Constants.leagueUrl,
+                Constants.winnerURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(dashboard.this, "successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(showLeagueWinners.this, "successful winner", Toast.LENGTH_LONG).show();
                         try {
                             JSONArray jsonarray= new JSONArray(response);
+//                            Toast.makeText(getContext(), "successful frag stmt arry size =  "+Integer.toString(jsonarray.length()), Toast.LENGTH_LONG).show();
+
                             for(int i=0;i<jsonarray.length();i++)
                             {
                                 JSONObject jsonobject= jsonarray.getJSONObject(i);
-                                int  lid= jsonobject.getInt("league_id");
-                                String title = jsonobject.getString("title");
-                                int resdec=jsonobject.getInt("resdec");
+                                int  uid= jsonobject.getInt("user_id");
+                                int  points= jsonobject.getInt("umaid");
+                                String name = jsonobject.getString("name");
 
-                                Toast.makeText(dashboard.this, "successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
-                                leagueList ll= new leagueList(title,lid);
-                                if(resdec==0) {
-                                    arrayList.add(ll);
-                                }
+                                winner w= new winner(name,points,uid);
+                                Toast.makeText(showLeagueWinners.this, "frag stmt successfulx", Toast.LENGTH_LONG).show();
+                                wlist.add(w);
                             }
-                            Toast.makeText(dashboard.this, "Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getContext(), "frag stmt 8877****01", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(dashboard.this, "NO LEAGUE", Toast.LENGTH_LONG).show();
+                                Toast.makeText(showLeagueWinners.this, " frag stmt NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 
@@ -85,7 +85,7 @@ public class dashboard extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        da.notifyDataSetChanged();
+                        sa.notifyDataSetChanged();
                     }
                 },
                 new Response.ErrorListener() {
@@ -93,20 +93,21 @@ public class dashboard extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 //                        progressDialog.dismiss();
                         String e= error.toString();
-                        Toast.makeText(dashboard.this, "unsuccessful", Toast.LENGTH_LONG).show();
-                        Toast.makeText(dashboard.this,e , Toast.LENGTH_LONG).show();
+                        Toast.makeText(showLeagueWinners.this, "unsuccessful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(showLeagueWinners.this,e , Toast.LENGTH_LONG).show();
                     }
                 }
         ){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("lid",Integer.toString(league_id));
                 return params;
             }
 
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(dashboard.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(showLeagueWinners.this);
         stringRequest.setRetryPolicy(new RetryPolicy() {
             @Override
             public int getCurrentTimeout() {

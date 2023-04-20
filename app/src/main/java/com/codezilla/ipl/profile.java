@@ -80,13 +80,16 @@ TextView wallet,coins,points;
                                 SharedPreferences.Editor editor = shpf.edit();
                                 editor.putString("passx",passwrd);
                                 editor.putString("emailx",email);
+                                editor.putInt("wallet",balance);
+                                editor.putInt("points",point);
+                                editor.putInt("coins",coin);
                                 editor.apply();
 
                                 edtname.setText(name);
                                 edtemail.setText(email);
-                                wallet.setText(Integer.toString(balance));
-                                coins.setText(Integer.toString(coin));
-                                points.setText(Integer.toString(point));
+                                wallet.setText("WALLET BALANCE "+Integer.toString(balance));
+                                coins.setText("COINS "+Integer.toString(coin));
+                                points.setText("POINTS "+Integer.toString(point));
 
                                 Toast.makeText(profile.this, "frag selt successfulx"+Integer.toString(uid), Toast.LENGTH_LONG).show();
 

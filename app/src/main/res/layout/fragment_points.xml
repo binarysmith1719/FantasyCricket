@@ -29,6 +29,7 @@
            android:textStyle="italic"
            android:fontFamily="sans-serif-black"
            android:text="1000"
+           android:id="@+id/txtcount"
            android:textColor="@color/white"
            android:textSize="50sp"
            android:layout_centerHorizontal="true"

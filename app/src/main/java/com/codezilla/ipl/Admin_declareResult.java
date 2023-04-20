@@ -1,12 +1,9 @@
 package com.codezilla.ipl;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -27,36 +24,33 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class dashboard extends AppCompatActivity {
-//    String LGE_KEY="league_key";
-    ArrayList<leagueList> arrayList= new ArrayList<>();
-    dashAdapter da;
+public class Admin_declareResult extends AppCompatActivity {
+
+    ArrayList<leagueList> arrayList=new ArrayList<>();
+    Admin_addLeagueAdapter aa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-        Toolbar toolBar = findViewById(R.id.tool_bar);
-        setSupportActionBar(toolBar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_admin_declare_result);
 
-        RecyclerView rv= findViewById(R.id.dashRV);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setHasFixedSize(true);
-
-        da = new dashAdapter(arrayList,this);
-        rv.setAdapter(da);
-
+        RecyclerView rvlg= findViewById(R.id.ryResult);
+        aa= new Admin_addLeagueAdapter(arrayList,this);
+        Admin_addLeagueAdapter.choice=2;
+        rvlg.setLayoutManager(new LinearLayoutManager(this));
+        rvlg.setHasFixedSize(true);
+        rvlg.setAdapter(aa);
         getLeague();
     }
     void getLeague()
     {
+        arrayList.clear();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.leagueUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(dashboard.this, "successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Admin_declareResult.this, "Admin successfullglglglg", Toast.LENGTH_LONG).show();
                         try {
                             JSONArray jsonarray= new JSONArray(response);
                             for(int i=0;i<jsonarray.length();i++)
@@ -64,19 +58,20 @@ public class dashboard extends AppCompatActivity {
                                 JSONObject jsonobject= jsonarray.getJSONObject(i);
                                 int  lid= jsonobject.getInt("league_id");
                                 String title = jsonobject.getString("title");
+                                String date = jsonobject.getString("date");
+                                String time = jsonobject.getString("time");
                                 int resdec=jsonobject.getInt("resdec");
-
-                                Toast.makeText(dashboard.this, "successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
-                                leagueList ll= new leagueList(title,lid);
+                                Toast.makeText(Admin_declareResult.this, "Admin successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
+                                leagueList ll= new leagueList(title,lid,date,time);
                                 if(resdec==0) {
                                     arrayList.add(ll);
                                 }
                             }
-                            Toast.makeText(dashboard.this, "Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Admin_declareResult.this, "Admin Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(dashboard.this, "NO LEAGUE", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Admin_declareResult.this, "Admin NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 
@@ -85,7 +80,7 @@ public class dashboard extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        da.notifyDataSetChanged();
+                        aa.notifyDataSetChanged();
                     }
                 },
                 new Response.ErrorListener() {
@@ -93,8 +88,8 @@ public class dashboard extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 //                        progressDialog.dismiss();
                         String e= error.toString();
-                        Toast.makeText(dashboard.this, "unsuccessful", Toast.LENGTH_LONG).show();
-                        Toast.makeText(dashboard.this,e , Toast.LENGTH_LONG).show();
+                        Toast.makeText(Admin_declareResult.this, "unsuccessful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Admin_declareResult.this,e , Toast.LENGTH_LONG).show();
                     }
                 }
         ){
@@ -106,7 +101,7 @@ public class dashboard extends AppCompatActivity {
 
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(dashboard.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(Admin_declareResult.this);
         stringRequest.setRetryPolicy(new RetryPolicy() {
             @Override
             public int getCurrentTimeout() {

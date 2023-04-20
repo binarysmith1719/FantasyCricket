@@ -96,6 +96,7 @@ public class login extends AppCompatActivity {
                                 editor.putBoolean("logged",true);
                                 editor.apply();
 
+
                                 Intent intent = new Intent(login.this, MainActivity.class);
                                 startActivity(intent);
                             }

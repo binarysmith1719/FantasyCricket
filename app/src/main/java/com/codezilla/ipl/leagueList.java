@@ -4,12 +4,18 @@ public class leagueList {
 
     String str;
     int league_id;
-
+    String date;
+    String time;
     public leagueList(String str, int league_id) {
         this.str = str;
         this.league_id = league_id;
     }
-
+    public leagueList(String str, int league_id,String date,String time) {
+        this.str = str;
+        this.league_id = league_id;
+        this.date=date;
+        this.time=time;
+    }
     public String getStr() {
         return str;
     }

@@ -3,6 +3,7 @@ package com.codezilla.ipl;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -62,7 +64,21 @@ public class statementAdapter extends RecyclerView.Adapter<statementAdapter.View
                 int stmt_id=ds.getStmt_id();
                 int points=ds.points;
                 int coins=ds.coins;
-                insertStmtDetail(stmt,stmt_id,points,coins);
+                AlertDialog.Builder dialog2 = new AlertDialog.Builder(context);
+                dialog2.setTitle("JOINING FEE ALERT");
+                dialog2.setMessage("For Joining Rs 100 will be DEDUCTED from your Wallet");
+                dialog2.setIcon(R.drawable.ic_baseline_check_box_24);
+                dialog2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        insertStmtDetail(stmt,stmt_id,points,coins);
+                    }
+                });
+                dialog2.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {}
+                });
+                dialog2.show();
             }
         });
     }
@@ -86,6 +102,16 @@ public class statementAdapter extends RecyclerView.Adapter<statementAdapter.View
     {
         SharedPreferences getshpf= context.getSharedPreferences(UID_KEY,MODE_PRIVATE);
         user_id = getshpf.getInt("uid",2);
+        int balance = getshpf.getInt("wallet",2);
+        if(balance<100) {
+            Toast.makeText(context, "INSUFFICIENT BALANCE !!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else
+        {
+               amtupdater am=new amtupdater(context,-100);
+               am.addAmt();
+        }
 
         SharedPreferences getshpf2= context.getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
         league_id = getshpf2.getInt("leaguek",1);
@@ -156,4 +182,5 @@ public class statementAdapter extends RecyclerView.Adapter<statementAdapter.View
         });
         requestQueue.add(stringRequest);
     }
+
 }

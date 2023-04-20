@@ -19,6 +19,17 @@ public class Constants {
     public static final String upemailURL=ROOT_URL+"minipro/IPLupdateEmail.php";
     public static final String uppassURL=ROOT_URL+"minipro/IPLupdatepass.php";
     public static final String upnameURL=ROOT_URL+"minipro/IPLupdatename.php";
+    public static final String pointsURL=ROOT_URL+"minipro/IPLpoints.php?uid=";
+    public static final String addleagueURL=ROOT_URL+"minipro/IPLaddLeague.php?uid=";
+    public static final String addnewstmtURL=ROOT_URL+"minipro/IPLaddNewStmt.php";
+    public static final String adminLoginURL=ROOT_URL+"minipro/IPLAdminLogin.php";
+    public static final String rightURL=ROOT_URL+"minipro/IPLright.php";
+    public static final String winnerURL=ROOT_URL+"minipro/IPLgetWinner.php";
+    public static final String uppointsURL=ROOT_URL+"minipro/IPLuppoints.php";
+    public static final String upbalanceURL=ROOT_URL+"minipro/IPLupBalance.php";
+
+
+
 
     public static final String bookconfirmUrl=ROOT_URL+"minipro/bookconfirm.php";
     public static final String booktoUrl=ROOT_URL+"minipro/bookedTo.php";

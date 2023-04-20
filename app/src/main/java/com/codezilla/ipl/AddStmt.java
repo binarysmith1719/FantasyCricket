@@ -1,13 +1,14 @@
 package com.codezilla.ipl;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,56 +28,73 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class dashboard extends AppCompatActivity {
-//    String LGE_KEY="league_key";
-    ArrayList<leagueList> arrayList= new ArrayList<>();
-    dashAdapter da;
+public class AddStmt extends AppCompatActivity implements Admin_StmtDetail.stmtListener{
+    ArrayList<data_stmt> stmtlist=new ArrayList<>();
+    int league_id;
+    String LEAGUE_KEY="lgkey";
+    statementAdapter sa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-        Toolbar toolBar = findViewById(R.id.tool_bar);
-        setSupportActionBar(toolBar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_add_stmt);
+        Admin_StmtDetail.initSTMTlistener(this);
+        Button btnADDstmtDetail = findViewById(R.id.btnaddstmt);
 
-        RecyclerView rv= findViewById(R.id.dashRV);
+        btnADDstmtDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                  Intent in= new Intent(AddStmt.this,Admin_StmtDetail.class);
+                  startActivity(in);
+            }
+        });
+
+        SharedPreferences getshpf= getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
+        int value = getshpf.getInt("leagueADMIN",1);
+        league_id=value;
+
+        RecyclerView rv= findViewById(R.id.rvst);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setHasFixedSize(true);
 
-        da = new dashAdapter(arrayList,this);
-        rv.setAdapter(da);
+        sa= new statementAdapter(this,stmtlist);
 
+        rv.setAdapter(sa);
         getLeague();
     }
     void getLeague()
     {
+        stmtlist.clear();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
-                Constants.leagueUrl,
+                Constants.stmtUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(dashboard.this, "successful", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(AddStmt.this, "successful frag stmt 11", Toast.LENGTH_LONG).show();
                         try {
                             JSONArray jsonarray= new JSONArray(response);
+//                            Toast.makeText(AddStmt.this, "successful frag stmt arry size =  "+Integer.toString(jsonarray.length()), Toast.LENGTH_LONG).show();
+
                             for(int i=0;i<jsonarray.length();i++)
                             {
                                 JSONObject jsonobject= jsonarray.getJSONObject(i);
                                 int  lid= jsonobject.getInt("league_id");
-                                String title = jsonobject.getString("title");
-                                int resdec=jsonobject.getInt("resdec");
+                                int  sid= jsonobject.getInt("stmt_id");
+                                int  points= jsonobject.getInt("points");
+                                int  coins=jsonobject.getInt("coins");
+                                String title = jsonobject.getString("statement");
 
-                                Toast.makeText(dashboard.this, "successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
-                                leagueList ll= new leagueList(title,lid);
-                                if(resdec==0) {
-                                    arrayList.add(ll);
-                                }
+                                data_stmt ds=new data_stmt(title,sid,lid,points,coins);
+
+//                                Toast.makeText(AddStmt.this, "frag stmt successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
+
+                                stmtlist.add(ds);
                             }
-                            Toast.makeText(dashboard.this, "Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddStmt.this, "frag stmt 8877****01", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(dashboard.this, "NO LEAGUE", Toast.LENGTH_LONG).show();
+                                Toast.makeText(AddStmt.this, " frag stmt NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 
@@ -85,7 +103,7 @@ public class dashboard extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        da.notifyDataSetChanged();
+                        sa.notifyDataSetChanged();
                     }
                 },
                 new Response.ErrorListener() {
@@ -93,20 +111,21 @@ public class dashboard extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 //                        progressDialog.dismiss();
                         String e= error.toString();
-                        Toast.makeText(dashboard.this, "unsuccessful", Toast.LENGTH_LONG).show();
-                        Toast.makeText(dashboard.this,e , Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddStmt.this, "unsuccessful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddStmt.this,e , Toast.LENGTH_LONG).show();
                     }
                 }
         ){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("id",Integer.toString(league_id));
                 return params;
             }
 
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(dashboard.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(AddStmt.this);
         stringRequest.setRetryPolicy(new RetryPolicy() {
             @Override
             public int getCurrentTimeout() {
@@ -124,5 +143,10 @@ public class dashboard extends AppCompatActivity {
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onstmtaddition() {
+        getLeague();
     }
 }

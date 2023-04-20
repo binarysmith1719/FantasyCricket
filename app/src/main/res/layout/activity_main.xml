@@ -22,45 +22,44 @@
             app:popupTheme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="match_parent">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textColor="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
             <Button
                 android:id="@+id/btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:elevation="8dp"
                 android:text="MY CONTEST"
+                android:layout_marginHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"></Button>
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            </Button>
 
             <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn2"
-        android:text="DASH"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn"></Button>
+                android:layout_width="match_parent"
+                   android:layout_height="80dp"
+                  android:elevation="8dp"
+                  android:id="@+id/btn2"
+                    android:text="DASHBOARD"
+                  android:layout_marginHorizontal="10dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/btn">
+
+            </Button>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="10dp"
                     android:id="@+id/btn3"
-                    android:text="DASH2"
+                    android:text="See Result"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btn"></Button>

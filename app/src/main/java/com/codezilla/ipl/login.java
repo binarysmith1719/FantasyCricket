@@ -81,6 +81,7 @@ public class login extends AppCompatActivity {
                             for(int i=0;i<jsonarray.length();i++)
                             {
                                 JSONObject jsonobject= jsonarray.getJSONObject(i);
+                                String name=jsonobject.getString("name");
                                 int  uid= jsonobject.getInt("user_id");
                                 int wallet_balance = Integer.parseInt(jsonobject.getString("wallet_balance"));
                                 int points = Integer.parseInt(jsonobject.getString("points"));
@@ -90,6 +91,7 @@ public class login extends AppCompatActivity {
                                 SharedPreferences shpf = getSharedPreferences(UID_KEY,MODE_PRIVATE);
                                 SharedPreferences.Editor editor = shpf.edit();
                                 editor.putInt("uid",uid);
+                                editor.putString("username",name);
                                 editor.putInt("wallet",wallet_balance);
                                 editor.putInt("points",points);
                                 editor.putInt("coins",coins);

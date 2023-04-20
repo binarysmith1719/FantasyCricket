@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     private String MAIN_KEY="main_key";
     private String LEAGUE_KEY="lgkey";
+    String UID_KEY="main_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +91,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(in);
             }
         });
+
+        SharedPreferences shpfx = getSharedPreferences(UID_KEY,MODE_PRIVATE);
+        String usernamex=shpfx.getString("username","John doe");
+//        TextView txt= navigationView.findViewById(R.id.textusername);
+          View  vw=navigationView.getHeaderView(0);
+          TextView txt= vw.findViewById(R.id.textusername);
+          txt.setText(usernamex);
     }
-    String UID_KEY="main_key";
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         SharedPreferences getshpf= getSharedPreferences(UID_KEY,MODE_PRIVATE);

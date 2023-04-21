@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cricketlogintype"
     tools:context=".SelectLoginType">
 
     <Button
@@ -11,6 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User"
+        android:fontFamily="@font/bungee"
+        android:backgroundTint="#FF7F50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="5dp"
@@ -22,6 +25,7 @@
         android:layout_height="wrap_content"
         android:text="admin"
         android:id="@+id/admin"
+        android:fontFamily="@font/bungee"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

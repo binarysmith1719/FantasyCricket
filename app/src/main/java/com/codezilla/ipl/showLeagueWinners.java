@@ -34,6 +34,8 @@ public class showLeagueWinners extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_league_winners);
+        getSupportActionBar().setTitle("LEAGUE WINNERS");
+
         SharedPreferences getshpf= getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
         int value = getshpf.getInt("leagueADMIN",1);
         league_id=value;
@@ -56,7 +58,7 @@ public class showLeagueWinners extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(showLeagueWinners.this, "successful winner", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(showLeagueWinners.this, "successful winner", Toast.LENGTH_LONG).show();
                         try {
                             JSONArray jsonarray= new JSONArray(response);
 //                            Toast.makeText(getContext(), "successful frag stmt arry size =  "+Integer.toString(jsonarray.length()), Toast.LENGTH_LONG).show();
@@ -69,14 +71,14 @@ public class showLeagueWinners extends AppCompatActivity {
                                 String name = jsonobject.getString("name");
 
                                 winner w= new winner(name,points,uid);
-                                Toast.makeText(showLeagueWinners.this, "frag stmt successfulx", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(showLeagueWinners.this, "frag stmt successfulx", Toast.LENGTH_LONG).show();
                                 wlist.add(w);
                             }
 //                            Toast.makeText(getContext(), "frag stmt 8877****01", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(showLeagueWinners.this, " frag stmt NO LEAGUE", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(showLeagueWinners.this, " frag stmt NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 

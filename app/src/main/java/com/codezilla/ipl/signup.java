@@ -37,6 +37,7 @@ EditText password;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        getSupportActionBar().setTitle("SIGNUP");
 
         name=findViewById(R.id.edt_name);
         phone=findViewById(R.id.edt_phone);

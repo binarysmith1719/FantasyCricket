@@ -38,6 +38,7 @@ public class dashboard extends AppCompatActivity {
         Toolbar toolBar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("SELECT LEAGUE");
 
         RecyclerView rv= findViewById(R.id.dashRV);
         rv.setLayoutManager(new LinearLayoutManager(this));

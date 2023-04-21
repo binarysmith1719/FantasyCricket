@@ -41,7 +41,9 @@ public class login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-       Button btn_login= findViewById(R.id.btn_login);
+        getSupportActionBar().setTitle("LOGIN");
+
+        Button btn_login= findViewById(R.id.btn_login);
        edt_email=findViewById(R.id.edt_eml);
        edt_password=findViewById(R.id.edt_pass);
        result=1;

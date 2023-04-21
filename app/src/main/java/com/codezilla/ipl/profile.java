@@ -37,6 +37,8 @@ TextView wallet,coins,points;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getSupportActionBar().setTitle("PROFILE");
+
         Button edt_data= findViewById(R.id.btn_editdata);
         edt_data.setOnClickListener(new View.OnClickListener() {
             @Override

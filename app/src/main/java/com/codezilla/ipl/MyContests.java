@@ -14,6 +14,8 @@ public class MyContests extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_contests);
+        getSupportActionBar().setTitle("MY CONTESTS");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         tl = findViewById(R.id.tab);
         vp = findViewById(R.id.viewpager);

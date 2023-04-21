@@ -38,7 +38,7 @@ public class Admin_StmtResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_stmt_result);
-
+        getSupportActionBar().setTitle("DECLARE RESULT");
         SharedPreferences getshpf= getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
         int value = getshpf.getInt("leagueADMIN",1);
         league_id=value;
@@ -86,11 +86,11 @@ public class Admin_StmtResult extends AppCompatActivity {
 
                                 stmtlist.add(ds);
                             }
-                            Toast.makeText(Admin_StmtResult.this, "frag stmt 8877****01", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(Admin_StmtResult.this, "frag stmt 8877****01", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(Admin_StmtResult.this,  " frag stmt NO LEAGUE", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(Admin_StmtResult.this,  " frag stmt NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 

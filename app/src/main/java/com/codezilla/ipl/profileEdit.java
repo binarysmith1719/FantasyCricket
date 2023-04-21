@@ -34,6 +34,8 @@ public class profileEdit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
+        getSupportActionBar().setTitle("EDIT PROFILE");
+
         edtname=findViewById(R.id.edt_name);
         phone=findViewById(R.id.edt_phone);
         edtemailOLD=findViewById(R.id.edt_eml2);

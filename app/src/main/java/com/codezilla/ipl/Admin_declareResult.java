@@ -32,6 +32,7 @@ public class Admin_declareResult extends AppCompatActivity implements Admin_Stmt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_declare_result);
+        getSupportActionBar().setTitle("SELECT LEAGUE");
         Admin_StmtResult.makeref(this);
         RecyclerView rvlg= findViewById(R.id.ryResult);
         aa= new Admin_addLeagueAdapter(arrayList,this);
@@ -51,7 +52,7 @@ public class Admin_declareResult extends AppCompatActivity implements Admin_Stmt
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(Admin_declareResult.this, "Admin successfullglglglg", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(Admin_declareResult.this, "Admin successfullglglglg", Toast.LENGTH_LONG).show();
                         try {
                             JSONArray jsonarray= new JSONArray(response);
                             for(int i=0;i<jsonarray.length();i++)
@@ -62,17 +63,17 @@ public class Admin_declareResult extends AppCompatActivity implements Admin_Stmt
                                 String date = jsonobject.getString("date");
                                 String time = jsonobject.getString("time");
                                 int resdec=jsonobject.getInt("resdec");
-                                Toast.makeText(Admin_declareResult.this, "Admin successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
+//                                Toast.makeText(Admin_declareResult.this, "Admin successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
                                 leagueList ll= new leagueList(title,lid,date,time);
                                 if(resdec==0) {
                                     arrayList.add(ll);
                                 }
                             }
-                            Toast.makeText(Admin_declareResult.this, "Admin Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(Admin_declareResult.this, "Admin Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(Admin_declareResult.this, "Admin NO LEAGUE", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(Admin_declareResult.this, "Admin NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 

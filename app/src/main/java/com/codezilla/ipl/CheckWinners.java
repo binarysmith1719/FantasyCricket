@@ -31,6 +31,8 @@ public class CheckWinners extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_winners);
+        getSupportActionBar().setTitle("SELECT LEAGUE");
+
         RecyclerView rvlg= findViewById(R.id.rvlg);
         aa= new Admin_addLeagueAdapter(arrayList,this);
         Admin_addLeagueAdapter.choice=3;
@@ -68,11 +70,11 @@ public class CheckWinners extends AppCompatActivity {
                                    arrayList.add(ll);
                                }
                             }
-                            Toast.makeText(CheckWinners.this, "Admin Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(CheckWinners.this, "Admin Checking LEAGUE *88******77", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(CheckWinners.this, "Admin NO LEAGUE", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(CheckWinners.this, "Admin NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 

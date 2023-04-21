@@ -33,6 +33,8 @@ public class AddAmount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_amount);
+        getSupportActionBar().setTitle("ADD BALANCE AMOUNT");
+
         amt=0;
         SharedPreferences getshpf= getSharedPreferences(UID_KEY,MODE_PRIVATE);
         user_id = getshpf.getInt("uid",2);

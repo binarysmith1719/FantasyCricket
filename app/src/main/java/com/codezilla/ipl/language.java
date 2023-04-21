@@ -13,6 +13,8 @@ public class language extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("STATEMENTS");
+
         TabLayout tabl= findViewById(R.id.tabl);
         ViewPager vp= findViewById(R.id.viewpagerl);
 

@@ -7,7 +7,9 @@ public class Constants {
 
     public static final String ROOT_URL3= "http://192.168.42.183/";//subham1
     public static final String ROOT_URL5="http://192.168.1.6/";//subham2
-    public static final String ROOT_URL="http://192.168.43.111/";//subham again
+    public static final String ROOT_URL6="http://192.168.43.111/";//subham again
+    public static final String ROOT_URL="http://192.168.1.3/";//subham again
+
 
     public static final String loginURL=ROOT_URL+"minipro/IPLuserCredp.php";
     public static final String signupURL=ROOT_URL+"minipro/IPLsignup.php";

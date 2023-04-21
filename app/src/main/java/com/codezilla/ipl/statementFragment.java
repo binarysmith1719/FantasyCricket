@@ -51,7 +51,7 @@ public class statementFragment extends Fragment {
         SharedPreferences getshpf= getContext().getSharedPreferences(LEAGUE_KEY,MODE_PRIVATE);
         int value = getshpf.getInt("leaguek",1);
         league_id=value;
-        Toast.makeText(getContext(), "successful stmt frag lid"+Integer.toString(value), Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(), "successful stmt frag lid"+Integer.toString(value), Toast.LENGTH_LONG).show();
 
 //        stmtlist.add(ds);
 //        stmtlist.add(ds1);
@@ -80,7 +80,7 @@ public class statementFragment extends Fragment {
                         Toast.makeText(getContext(), "successful frag stmt 11", Toast.LENGTH_LONG).show();
                         try {
                             JSONArray jsonarray= new JSONArray(response);
-                            Toast.makeText(getContext(), "successful frag stmt arry size =  "+Integer.toString(jsonarray.length()), Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getContext(), "successful frag stmt arry size =  "+Integer.toString(jsonarray.length()), Toast.LENGTH_LONG).show();
 
                             for(int i=0;i<jsonarray.length();i++)
                             {
@@ -93,11 +93,11 @@ public class statementFragment extends Fragment {
 
                                 data_stmt ds=new data_stmt(title,sid,lid,points,coins);
 
-                                Toast.makeText(getContext(), "frag stmt successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getContext(), "frag stmt successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
 
                                 stmtlist.add(ds);
                             }
-                            Toast.makeText(getContext(), "frag stmt 8877****01", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getContext(), "frag stmt 8877****01", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {

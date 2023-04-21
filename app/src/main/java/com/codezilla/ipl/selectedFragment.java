@@ -73,7 +73,7 @@ public class selectedFragment extends Fragment implements OnAdditionListener{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getContext(), "successful frag selt", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getContext(), "successful frag selt", Toast.LENGTH_LONG).show();
                         selectedlist.clear();
                         try {
                             JSONArray jsonarray= new JSONArray(response);
@@ -88,15 +88,15 @@ public class selectedFragment extends Fragment implements OnAdditionListener{
 
                                 data_stmt ds=new data_stmt(title,sid,lid,points);
 
-                                Toast.makeText(getContext(), "frag selt successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getContext(), "frag selt successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
 
                                 selectedlist.add(ds);
                             }
-                            Toast.makeText(getContext(), "frag selt 8877****01", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getContext(), "frag selt 8877****01", Toast.LENGTH_LONG).show();
 
                             if(jsonarray.length()==0)
                             {
-                                Toast.makeText(getContext(), "frag selt NO LEAGUE", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getContext(), "frag selt NO LEAGUE", Toast.LENGTH_LONG).show();
                             }else
                             {
 

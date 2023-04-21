@@ -64,10 +64,12 @@ public class dashboard extends AppCompatActivity {
                                 JSONObject jsonobject= jsonarray.getJSONObject(i);
                                 int  lid= jsonobject.getInt("league_id");
                                 String title = jsonobject.getString("title");
+                                String date = jsonobject.getString("date");
+                                String time = jsonobject.getString("time");
                                 int resdec=jsonobject.getInt("resdec");
 
-                                Toast.makeText(dashboard.this, "successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
-                                leagueList ll= new leagueList(title,lid);
+//                                Toast.makeText(dashboard.this, "successfulx"+Integer.toString(lid), Toast.LENGTH_LONG).show();
+                                leagueList ll= new leagueList(title,lid,date,time);
                                 if(resdec==0) {
                                     arrayList.add(ll);
                                 }

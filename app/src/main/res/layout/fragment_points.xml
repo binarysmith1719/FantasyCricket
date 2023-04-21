@@ -15,7 +15,7 @@
            android:textStyle="italic"
            android:padding="10dp"
            android:id="@+id/txtpnts"
-           android:fontFamily="sans-serif-black"
+           android:fontFamily="@font/bungee"
            android:text="TOTAL POINTS ACQUIRED"
            android:gravity="center"
            android:textSize="50sp"
@@ -26,12 +26,13 @@
            android:layout_width="wrap_content"
            android:layout_below="@+id/txtpnts"
            android:layout_marginTop="20dp"
-           android:textStyle="italic"
-           android:fontFamily="sans-serif-black"
+
+           android:fontFamily="@font/bungee"
            android:text="1000"
            android:id="@+id/txtcount"
            android:textColor="@color/white"
            android:textSize="50sp"
+           android:padding="5dp"
            android:layout_centerHorizontal="true"
            android:layout_height="wrap_content">
 

@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/btnaddstmt"
+        android:fontFamily="@font/bungee"
         android:background="@drawable/btn_backgrnd"
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
